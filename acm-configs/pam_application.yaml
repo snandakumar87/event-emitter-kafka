@@ -1,0 +1,15 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: pam-deployment
+  namespace: rhpam-monitoring
+spec:
+  selector:
+    matchExpressions:
+      - key: deployment  
+        operator: In
+        values:
+        - pam-deployment
+  componentKinds:
+  - group: app.ibm.com/v1alpha1
+    kind: Subscription
